@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225082322) do
+ActiveRecord::Schema.define(:version => 20131225092106) do
 
   create_table "gb_repos", :force => true do |t|
     t.string   "address"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20131225082322) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "gb_users_gists", :force => true do |t|
+    t.integer "gb_user_id", :null => false
+    t.integer "gist_id",    :null => false
+  end
+
   create_table "gb_users_roles", :id => false, :force => true do |t|
     t.integer "gb_user_id"
     t.integer "role_id"
@@ -41,6 +46,13 @@ ActiveRecord::Schema.define(:version => 20131225082322) do
   create_table "gb_users_users", :force => true do |t|
     t.integer "gb_user_id", :null => false
     t.integer "user_id",    :null => false
+  end
+
+  create_table "gists", :force => true do |t|
+    t.string   "address"
+    t.text     "extra"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|

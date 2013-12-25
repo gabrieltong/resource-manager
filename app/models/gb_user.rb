@@ -4,6 +4,8 @@ class GbUser < ActiveRecord::Base
 
   has_and_belongs_to_many :gb_repos
 
+  has_and_belongs_to_many :gists  
+
   def import_starrings(page=1,per_page=100)
     require 'json'
 

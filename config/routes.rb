@@ -1,5 +1,8 @@
 GithubManager::Application.routes.draw do
 
+  resources :gists
+
+
   get "tags/index"
 
   resources :users,:only=>[:index,:show,:destroy,:edit,:update] do
