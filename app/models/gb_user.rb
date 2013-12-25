@@ -2,6 +2,8 @@ class GbUser < ActiveRecord::Base
   rolify
   attr_accessible :username
 
+  has_and_belongs_to_many :gb_repos
+    
   def import_starrings
     require 'json'
 
