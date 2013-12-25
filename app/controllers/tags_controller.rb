@@ -7,4 +7,8 @@ class TagsController < ApplicationController
     end
     paginate
   end
+
+  def show
+  	@tag = ActsAsTaggableOn::Tag.find(params[:id])
+  end
 end

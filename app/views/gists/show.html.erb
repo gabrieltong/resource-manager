@@ -1,15 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Gist -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <b>Address:</b>
-  <%= @gist.address %>
-</p>
+<table class="table table-striped table-bordered">
+  <tr>
+    <td><strong><%= model_class.human_attribute_name(:address) %>:</strong></td>
+    <td><%= @gist.address %></td>
+  </tr>
+  <tr>
+    <td><strong><%= model_class.human_attribute_name(:extra) %>:</strong></td>
+    <td><%= @gist.extra %></td>
+  </tr>  
+</table>
 
-<p>
-  <b>Extra:</b>
-  <%= @gist.extra %>
-</p>
-
-
-<%= link_to 'Edit', edit_gist_path(@gist) %> |
-<%= link_to 'Back', gists_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              gists_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_gist_path(@gist), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              gist_path(@gist),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

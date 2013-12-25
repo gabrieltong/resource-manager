@@ -1,4 +1,4 @@
-<%- model_class = GbUser -%>
+<%- model_class = User -%>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -6,9 +6,9 @@
     </tr>
   </thead>
   <tbody>
-    <% collection.each do |gb_user| %>
+    <% collection.each do |user| %>
       <tr>
-        <td><%= link_to gb_user.username, gb_user_path(gb_user) %></td>
+        <td><%= link_to user.email, user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>

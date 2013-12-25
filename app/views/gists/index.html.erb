@@ -1,25 +1,6 @@
-<h1>Listing gists</h1>
-
-<table>
-  <tr>
-    <th>Address</th>
-    <th>Extra</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @gists.each do |gist| %>
-  <tr>
-    <td><%= gist.address %></td>
-    <td><%= gist.extra %></td>
-    <td><%= link_to 'Show', gist %></td>
-    <td><%= link_to 'Edit', edit_gist_path(gist) %></td>
-    <td><%= link_to 'Destroy', gist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Gist', new_gist_path %>
+<%- model_class = Gist -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<%=render 'list',:collection=>@collection%>
+<%= will_paginate @collection, renderer: BootstrapPagination::Rails %>

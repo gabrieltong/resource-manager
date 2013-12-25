@@ -1,0 +1,17 @@
+<%- model_class = GbRepo -%>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:address) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |gb_repo| %>
+      <tr>
+        <td><%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %></td>
+        <td><%= gb_repo.address %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

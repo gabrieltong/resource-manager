@@ -1,12 +1,9 @@
-<%= simple_form_for(@gist) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :address %>
-    <%= f.input :extra %>
-  </div>
-
+<%= simple_form_for @gist, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :address %>
+  <%= f.input :extra %>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                gists_path, :class => 'btn' %>
   </div>
 <% end %>
