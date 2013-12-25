@@ -4,8 +4,8 @@ gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
+gem 'mysql2'
+# gem 'sqlite3'
 
 
 # Gems used only for assets and not required
@@ -36,3 +36,18 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'clearance'
+gem 'rolify'
+gem 'cancan'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+gem 'simple_form'
+group :development,:gabriellocal do 
+  gem 'better_errors'
+end
+gem 'will_paginate-bootstrap', '0.2.5'
+gem 'rails-i18n', '~> 3.0.0' # For 3.x
+gem 'acts-as-taggable-on'
+gem 'draper', '~> 1.3'
+gem 'httparty'

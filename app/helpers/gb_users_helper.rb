@@ -1,0 +1,2 @@
+module GbUsersHelper
+end

@@ -1,4 +1,10 @@
 GithubManager::Application.routes.draw do
+  resources :gb_repos
+
+
+  resources :gb_users
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
