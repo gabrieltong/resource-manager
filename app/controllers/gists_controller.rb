@@ -2,12 +2,12 @@ class GistsController < ApplicationController
   # GET /gists
   # GET /gists.json
   def index
-    @gists = Gist.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @gists }
+    if @user
+      @relation = @user.gb_repos
+    else
+      @relation =  Gist.where(true)
     end
+    paginate
   end
 
   # GET /gists/1
