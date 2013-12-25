@@ -1,8 +1,22 @@
 GithubManager::Application.routes.draw do
-  resources :gb_repos
+
+  get "tags/index"
+
+  resources :users,:only=>[:index,:show,:destroy,:edit,:update] do
+    resources :tags,:only=>[:index,:show] do
+    end
+
+    resources :gb_repos,:only=>[:index,:show] do
+    end
+
+    resources :gb_users,:only=>[:index,:show] do
+    end
+  end
+
+  resources :gb_repos,:only=>[:index,:show]
 
 
-  resources :gb_users
+  resources :gb_users,:only=>[:index,:show]
 
 
   # The priority is based upon order of creation:

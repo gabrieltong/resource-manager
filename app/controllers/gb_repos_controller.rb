@@ -2,12 +2,12 @@ class GbReposController < ApplicationController
   # GET /gb_repos
   # GET /gb_repos.json
   def index
-    @gb_repos = GbRepo.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @gb_repos }
+    if @user
+      @relation = @user.gb_repos
+    else
+      @relation =  GbRepo.where(true)
     end
+    paginate
   end
 
   # GET /gb_repos/1

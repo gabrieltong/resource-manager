@@ -2,12 +2,12 @@ class GbUsersController < ApplicationController
   # GET /gb_users
   # GET /gb_users.json
   def index
-    @gb_users = GbUser.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @gb_users }
+    if @user
+      @relation = @user.gb_repos
+    else
+      @relation =  GbUser.where(true)
     end
+    paginate
   end
 
   # GET /gb_users/1
