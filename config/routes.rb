@@ -21,7 +21,7 @@ GithubManager::Application.routes.draw do
     resources :gists,:only=>[:index,:show] do
     end
 
-    resources :gb_users,:only=>[:index,:show] do
+    resources :gb_users,:only=>[:index,:show,:new,:create,:update,:edit] do
     end
   end
 

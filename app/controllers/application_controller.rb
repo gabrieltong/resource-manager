@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_tag
-    @user = Tag.find_by_id(params[:tag_id])
+    @user = ActsAsTaggableOn::Tag.find_by_id(params[:tag_id])
   end
 
 
