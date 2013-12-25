@@ -2,7 +2,14 @@ GithubManager::Application.routes.draw do
 
   resources :gists,:only=>[:index,:show]
 
-  resources :tags,:only=>[:index]
+  resources :tags,:only=>[:index] do
+    resources :gb_repos,:only=>[:index,:show] do
+    end
+
+    resources :gists,:only=>[:index,:show] do
+    end
+  end
+
 
   resources :users,:only=>[:index,:show,:destroy,:edit,:update] do
     resources :tags,:only=>[:index,:show] do

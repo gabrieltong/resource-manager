@@ -4,6 +4,8 @@ class GistsController < ApplicationController
   def index
     if @user
       @relation = @user.gb_repos
+    elsif @tag
+      @relation = Gist.tagged_with @tag.name  
     else
       @relation =  Gist.where(true)
     end

@@ -1,17 +1,17 @@
 class ApplicationController < ActionController::Base
-  before_filter :find_user,:paginate_params
+  before_filter :find_user,:find_tag,:paginate_params
   include Clearance::Controller
   protect_from_forgery
 
   private
   def find_user
-    if @user
-      @relation = @user.owned_tags
-    else
-      @relation = ActsAsTaggableOn::Tag.where(true)
-    end
-
+    @user = User.find_by_id(params[:user_id])
   end
+
+  def find_tag
+    @user = Tag.find_by_id(params[:tag_id])
+  end
+
 
   # 在返回集合的api上设置分页的页数和分页大小
   # 结果：设置好 @page 和 @per_page

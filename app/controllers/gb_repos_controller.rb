@@ -4,6 +4,8 @@ class GbReposController < ApplicationController
   def index
     if @user
       @relation = @user.gb_repos
+    elsif @tag
+      @relation = GbRepo.tagged_with @tag.name
     else
       @relation =  GbRepo.where(true)
     end
