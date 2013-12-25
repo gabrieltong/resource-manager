@@ -1,7 +1,5 @@
 GithubManager::Application.routes.draw do
 
-  resources :gists,:only=>[:index,:show]
-
   resources :tags,:only=>[:index] do
     resources :gb_repos,:only=>[:index,:show] do
     end
@@ -15,21 +13,23 @@ GithubManager::Application.routes.draw do
     resources :tags,:only=>[:index,:show] do
     end
 
+    resources :gb_users,:only=>[:index,:show,:new,:create,:update,:edit] do
+    end
+    
     resources :gb_repos,:only=>[:index,:show] do
     end
 
     resources :gists,:only=>[:index,:show] do
     end
 
-    resources :gb_users,:only=>[:index,:show,:new,:create,:update,:edit] do
-    end
   end
-
-  resources :gb_repos,:only=>[:index,:show]
 
 
   resources :gb_users,:only=>[:index,:show]
 
+  resources :gb_repos,:only=>[:index,:show]
+
+  resources :gists,:only=>[:index,:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

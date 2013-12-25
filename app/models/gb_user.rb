@@ -19,7 +19,7 @@ class GbUser < ActiveRecord::Base
       repo.extra = item
       gb_repos << repo
     end
-    import_starrings(page+1) unless items.blank?
+    import_stared_gb_repos(page+1) unless items.blank?
   end
 
   def import_gists(page=1,per_page=100)
