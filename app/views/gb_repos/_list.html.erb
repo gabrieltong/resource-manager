@@ -11,7 +11,7 @@
       <tr>
         <td><%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %></td>
         <td>
-          <%= gb_repo.address %><br/>
+          <%= link_to gb_repo.address,gb_repo.address %><br/>
           <%= render 'tags/input',:taggable=>gb_repo,:owner=>@user%>
       </tr>
     <% end %>
