@@ -10,7 +10,13 @@
     <% collection.each do |gb_repo| %>
       <tr>
         <td><%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %></td>
-        <td><%= gb_repo.address %></td>
+        <td>
+          <%= gb_repo.address %><br/>
+          <div class="tag-list">
+            <div class="tags">
+            </div>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -7,12 +7,13 @@
   </thead>
   <tbody>
     <% collection.each do |tag| %>
+    <% tag=TagsDecorator.decorate(tag)%>
       <tr>
         <td>
           <% if defined?(user) %>
-          <%= link_to tag.name, user_tag_path(user,tag) %></td>
+          <%= link_to tag.name_count, user_tag_path(user,tag) %></td>
           <% else %>
-          <%= link_to tag.name, tag_path(tag) %></td>
+          <%= link_to tag.name_count, tag_path(tag) %></td>
           <% end %>
       </tr>
     <% end %>

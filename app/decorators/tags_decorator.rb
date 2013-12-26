@@ -10,4 +10,7 @@ class TagsDecorator < Draper::Decorator
   #     end
   #   end
 
+  def name_count(user=nil)
+    "#{name}(#{GbRepo.tagged_with(name,:on=>:menus,:owned_by=>user).count()})"
+  end
 end

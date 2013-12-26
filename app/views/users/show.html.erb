@@ -10,13 +10,10 @@
   </tr>    
 </table>
 
-<%=render 'gb_users/list',:collection=>@user.gb_users%>
-
 <%=render 'gb_repos/list',:collection=>@user.gb_repos%>
 
 <%=render 'gists/list',:collection=>@user.gists%>
 
-<%=render 'tags/list',:collection=>@user.owned_tags%>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -31,5 +28,5 @@
 </div>
 
 <% content_for :right do %>
-<%=render 'tags/list',:collection=>@user.owned_tags%>
+<%=render 'tags/list',:collection=>@user.owned_tags,:user=>@user%>
 <% end %>

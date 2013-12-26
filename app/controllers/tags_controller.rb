@@ -9,8 +9,6 @@ class TagsController < ApplicationController
   end
 
   def show
-    p '<'*100
-    p params[:user_id]
   	@tag = ActsAsTaggableOn::Tag.find(params[:id])
   end
 end
