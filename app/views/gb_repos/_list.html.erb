@@ -12,8 +12,7 @@
         <td><%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %></td>
         <td>
           <%= gb_repo.address %><br/>
-          <input data-type='<%=gb_repo.class%>' data-id='<%=gb_repo.id%>' data-tags='<%=gb_repo.menus_from(@user).join(',')%>' type="text" name="tags" placeholder="Tags" class="tm-input input-mini"/>
-        </td>
+          <%= render 'tags/input',:taggable=>gb_repo,:owner=>@user%>
       </tr>
     <% end %>
   </tbody>
