@@ -3,7 +3,9 @@ GithubManager::Application.routes.draw do
   resources :tags,:only=>[:index] do
     collection do
       post :add
+      match :prefetch
     end
+
     resources :gb_repos,:only=>[:index,:show] do
     end
 

@@ -18,7 +18,7 @@
 $(function(){
   $(".tm-input").each(function(){
     var that = this;
-    $(this).tagsManager({
+    var api = $(this).tagsManager({
       prefilled:$(that).attr('data-tags'),
       AjaxPush: '/tags/add',
       AjaxPushAllTags: true,
@@ -27,5 +27,13 @@ $(function(){
         id:$(that).attr('data-id')
       }
     });
+
+    // $(this).typeahead({
+    //   name: 'tags',
+    //   limit: 15,
+    //   prefetch: '/tags/prefetch'
+    // }).on('typeahead:selected', function (e, d) {
+    //   api.tagsManager("pushTag", d.value);
+    // });
   })
 })

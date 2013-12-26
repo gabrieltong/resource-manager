@@ -20,4 +20,8 @@ class TagsController < ApplicationController
     taggable = model_class.find(params[:id])
     render :json=>User.first.tag(taggable,:with=>params[:tags],:on=>:menus)
   end
+
+  def prefetch
+    render :json=>['a','ccc']
+  end
 end
