@@ -11,4 +11,13 @@ class TagsController < ApplicationController
   def show
   	@tag = ActsAsTaggableOn::Tag.find(params[:id])
   end
+
+  def add
+    if params['type']=='GbRepo'
+      model_class = GbRepo
+    end
+
+    taggable = model_class.find(params[:id])
+    render :json=>User.first.tag(taggable,:with=>params[:tags],:on=>:menus)
+  end
 end

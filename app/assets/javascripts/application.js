@@ -18,9 +18,14 @@
 $(function(){
   $(".tm-input").each(function(){
     var that = this;
-    console.log($(that).attr('tags'))
     $(this).tagsManager({
-      prefilled:$(that).attr('tags')
+      prefilled:$(that).attr('data-tags'),
+      AjaxPush: '/tags/add',
+      AjaxPushAllTags: true,
+      AjaxPushParameters: {
+        type:$(that).attr('data-type'),
+        id:$(that).attr('data-id')
+      }
     });
   })
 })
