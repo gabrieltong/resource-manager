@@ -9,5 +9,7 @@ class GbRepoDecorator < Draper::Decorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
-
+  def tags_string
+    tags.collect {|i|i.name}.join(',')
+  end
 end

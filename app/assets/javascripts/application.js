@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(function(){
+  $(".tm-input").each(function(){
+    var that = this;
+    console.log($(that).attr('tags'))
+    $(this).tagsManager({
+      prefilled:$(that).attr('tags')
+    });
+  })
+})

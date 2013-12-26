@@ -8,14 +8,12 @@
   </thead>
   <tbody>
     <% collection.each do |gb_repo| %>
+      <!-- <% gb_repo=GbRepoDecorator.decorate(gb_repo)%> -->
       <tr>
         <td><%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %></td>
         <td>
           <%= gb_repo.address %><br/>
-          <div class="tag-list">
-            <div class="tags">
-            </div>
-          </div>
+          <input tags='<%=gb_repo.menus_from(@user).join(',')%>' type="text" name="tags" placeholder="Tags" class="tm-input"/>
         </td>
       </tr>
     <% end %>
