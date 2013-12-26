@@ -8,7 +8,12 @@
   <tbody>
     <% collection.each do |tag| %>
       <tr>
-        <td><%= link_to tag.name, tag_path(tag) %></td>
+        <td>
+          <% if defined?(user) %>
+          <%= link_to tag.name, user_tag_path(user,tag) %></td>
+          <% else %>
+          <%= link_to tag.name, tag_path(tag) %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>

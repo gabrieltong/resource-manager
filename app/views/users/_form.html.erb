@@ -1,8 +1,9 @@
-<%= simple_form_for @gb_user, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :username %>
-  <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                gb_users_path, :class => 'btn' %>
-  </div>
-<% end %>
+<div class='text-field'>
+  <%= form.label :email %>
+  <%= form.text_field :email, :type => 'email' %>
+</div>
+
+<div class='password-field'>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+</div>

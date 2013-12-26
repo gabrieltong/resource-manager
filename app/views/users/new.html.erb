@@ -1,5 +1,15 @@
-<%- model_class = GbUser -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+<div id='clearance' class='sign-up'>
+  <h2><%= t('.title') %></h2>
+
+  <%= form_for @user do |form| %>
+    <%= render :partial => '/users/form', :object => form %>
+
+    <div class='submit-field'>
+      <%= form.submit %>
+    </div>
+
+    <div class='other-links'>
+      <%= link_to t('.sign_in'), sign_in_path %>
+    </div>
+  <% end %>
 </div>
-<%= render :partial => 'form' %>
