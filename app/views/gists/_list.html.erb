@@ -8,7 +8,11 @@
   <tbody>
     <% collection.each do |gist| %>
       <tr>
-        <td><%= link_to gist.address, gist_path(gist) %></td>
+        <td>
+          <%= link_to gist.address, gist_path(gist) %>
+          <br/><br/>
+          <%= render 'tags/input',:taggable=>gist,:owner=>@user%>
+        </td>
       </tr>
     <% end %>
   </tbody>

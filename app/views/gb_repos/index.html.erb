@@ -4,3 +4,7 @@
 </div>
 <%=render 'list',:collection=>@collection%>
 <%= will_paginate @collection, renderer: BootstrapPagination::Rails %>
+
+<% content_for :right do %>
+<%=render 'tags/list',:collection=>@user.owned_tags,:user=>@user%>
+<% end %>

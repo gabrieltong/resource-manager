@@ -13,8 +13,11 @@ class TagsController < ApplicationController
   end
 
   def add
-    if params['type']=='GbRepo'
+    case params['type']
+    when 'GbRepo'
       model_class = GbRepo
+    when 'Gist','GistDecorator'  
+      model_class = Gist
     end
 
     taggable = model_class.find(params[:id])

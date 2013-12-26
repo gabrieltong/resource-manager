@@ -3,7 +3,7 @@ class GistsController < ApplicationController
   # GET /gists.json
   def index
     if @user
-      @relation = @user.gb_repos
+      @relation = @user.gists
     elsif @tag
       @relation = Gist.tagged_with @tag.name  
     else
