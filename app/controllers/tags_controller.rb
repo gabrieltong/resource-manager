@@ -25,6 +25,6 @@ class TagsController < ApplicationController
   end
 
   def prefetch
-    render :json=>['a','ccc']
+    render :json=>ActsAsTaggableOn::Tag.where("name like ?","%#{params['pre']}%").limit(10).collect{|i|i.name}
   end
 end

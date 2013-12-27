@@ -25,9 +25,18 @@ $(function(){
       AjaxPushParameters: {
         type:$(that).attr('data-type'),
         id:$(that).attr('data-id')
-      }
+      },
+      onlyTagList: true
     });
-
+    $(this).typeahead({
+      source:function(query,process){
+        $.post('/tags/prefetch',{
+          pre:$(that).val()
+        },function(data){
+          process(data)
+        })
+      }
+    })
     // $(this).typeahead({
     //   name: 'tags',
     //   limit: 15,
