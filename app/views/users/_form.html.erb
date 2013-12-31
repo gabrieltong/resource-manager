@@ -1,2 +1,8 @@
 <%= form.input :email%>
 <%= form.input :password %>
+<div class="control-group">
+  <div class="controls">
+    <%= form.button :submit%>
+    <%= link_to t('.sign_in'), sign_in_path ,:class=>'btn'%>
+  </div>
+</div>

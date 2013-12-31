@@ -3,7 +3,7 @@ class GbUsersController < ApplicationController
   # GET /gb_users.json
   def index
     if @user
-      @relation = @user.gb_repos
+      @relation = @user.gb_users
     else
       @relation =  GbUser.where(true)
     end
