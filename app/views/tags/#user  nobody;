@@ -1,0 +1,241 @@
+#user  nobody;
+user root;
+worker_processes  4;
+
+error_log  /php-app/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+
+    passenger_root /usr/lib64/ruby/gems/1.8/gems/passenger-4.0.8;
+    passenger_ruby /usr/local/rvm/wrappers/ruby-1.9.3-p429@rails3/ruby;
+   # rack_env gabriellocal;
+   
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    client_max_body_size 50m;
+    #gzip  on;
+    server {
+  access_log /rails-app/baocheng.prod/log/access.log;
+        error_log /rails-app/baocheng.prod/log/error.log;
+  listen 80;
+  rack_env production;
+  server_name open.edu58.cn;
+  root /rails-app/baocheng.prod/public;   # <--- be sure to point to 'public'!
+  passenger_enabled on;
+    }
+#    server {
+ #       access_log /rails-app/rails-sc/log/access.log;
+#        error_log /rails-app/rails-sc/log/error.log;
+#        listen 80;
+#        rack_env development;
+#        server_name sc.edu58.cn;
+#        root /rails-app/rails-sc/public;   # <--- be sure to point to 'public'!
+#        passenger_enabled on;
+#    }
+    server {
+        access_log /rails-app/rails-wanguo/log/access.log;
+        error_log /rails-app/rails-wanguo/log/error.log;
+        listen 80;
+        rack_env development;
+        server_name wg.edu58.cn;
+        root /rails-app/rails-wanguo/public;   # <--- be sure to point to 'public'!
+        passenger_enabled on;
+    }
+ #   server {
+ #       access_log /rails-app/redmine-sicheng/log/access.log;
+#        error_log /rails-app/redmine-sicheng/log/error.log;
+#        listen 80;
+#        rack_env development;
+#        server_name sc.edu58.cn;
+#        root /rails-app/redmine-sicheng/public;   # <--- be sure to point to 'public'!
+#        passenger_enabled on;
+   # }
+    server {
+        access_log /rails-app/resource-manager/log/access.log;
+        error_log /rails-app/resource-manager/log/error.log;
+        listen 80;
+        rack_env development;
+        server_name github.railsg.com;
+        root /rails-app/resource-manager/public;   # <--- be sure to point to 'public'!
+        passenger_enabled on;
+    }
+    server {
+        access_log /rails-app/redmine-sicheng/log/access.log;
+        error_log /rails-app/redmine-sicheng/log/error.log;
+        listen 80;
+        rack_env development;
+        server_name sc.edu58.cn;
+        root /rails-app/redmine-sicheng/public;   # <--- be sure to point to 'public'!
+        passenger_enabled on;
+    }
+  #  server {
+  #      listen 80;
+ #       rack_env stg;
+  #      server_name stg.edu58.cn;
+  #      root /rails-app/baocheng.stg/public;   # <--- be sure to point to 'public'!
+  #      passenger_enabled on;
+  #  }
+  #  server {
+# access_log /rails-app/baocheng.dev/log/access.log;
+ #       error_log /rails-app/baocheng.dev/log/error.log;
+# rack_env development;
+ #       listen 80;
+  #      server_name dev.edu58.cn;
+   #     root /rails-app/baocheng.dev/public;   # <--- be sure to point to 'public'!
+    #    passenger_enabled on;
+ #   }
+  #  server {
+   #     access_log /rails-app/rails-tbwa/log/access.log;
+  #      error_log /rails-app/rails-tbwa/log/error.log;
+ #       rack_env development;
+ #       listen 80;
+ #       server_name test.railsg.com;
+ #       root /rails-app/rails-tbwa/public;   # <--- be sure to point to 'public'!
+ #       passenger_enabled on;
+ #   }   
+    server {
+        rack_env production;
+        listen 80;
+        server_name redmine.edu58.cn;
+        root /rails-app/redmine/public;   # <--- be sure to point to 'public'!
+        passenger_enabled on;
+    }
+    server {
+        access_log /php-app/ali/access.log;
+        error_log /php-app/ali/error.log;
+      listen 80;
+  server_name ali.edu58.cn;
+        location ~ notify_url.php$ {
+      root           /php-app/ali;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name; 
+            include        fastcgi_params;
+        }
+  location ~ /\.pem {
+            deny  all;
+        }
+    }
+    server {
+  access_log /php-app/ali.dev/access.log;
+        error_log /php-app/ali.dev/error.log;
+        listen 80;
+        server_name ali.dev.edu58.cn;
+        location ~ notify_url.php$ {
+            root           /php-app/ali.dev;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+        location ~ /\.pem {
+            deny  all;
+        }
+    } 
+    server {
+        listen       80;
+        server_name  mysql.edu58.cn;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root  /php-app/phpmyadmin;
+            index index.php;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        location ~ \.php$ {
+            root           /php-app/phpmyadmin;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443;
+    #    server_name  localhost;
+
+    #    ssl                  on;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_timeout  5m;
+
+    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers   on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}

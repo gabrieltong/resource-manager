@@ -1,5 +1,7 @@
 GithubManager::Application.routes.draw do
 
+  get "entrance/home"
+
   resources :tags,:only=>[:index] do
     collection do
       post :add
