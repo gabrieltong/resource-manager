@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225092106) do
+ActiveRecord::Schema.define(:version => 20140107063905) do
 
   create_table "gb_repos", :force => true do |t|
     t.string   "address"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20131225092106) do
     t.string   "encrypted_password", :limit => 128, :null => false
     t.string   "confirmation_token", :limit => 128
     t.string   "remember_token",     :limit => 128, :null => false
+    t.string   "gb_username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

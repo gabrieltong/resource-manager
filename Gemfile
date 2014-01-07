@@ -51,4 +51,3 @@ gem 'rails-i18n', '~> 3.0.0' # For 3.x
 gem 'acts-as-taggable-on'
 gem 'draper', '~> 1.3'
 gem 'httparty'
-gem 'flatui-rails'

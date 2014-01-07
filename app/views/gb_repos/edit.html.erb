@@ -1,5 +1,7 @@
-<%- model_class = GbRepo -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+<div id='clearance' class='sign-up'>
+  <h2><%= t('.title') %></h2>
+
+  <%= simple_form_for @user,:html => { :method => :put,:class => 'form-horizontal'  } do |form| %>
+    <%= render :partial => '/users/form', :object => form %>
+  <% end %>
 </div>
-<%= render :partial => 'form' %>
