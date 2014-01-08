@@ -16,7 +16,9 @@ GithubManager::Application.routes.draw do
   end
 
 
-  resources :users,:only=>[:index,:show,:destroy,:edit,:update] do
+  # resources :users,:only=>[:index,:show,:destroy,:edit,:update] do
+  # resources :users,:only=>[:index,:show,:destroy,:edit,:update] do
+  resources :users,:only=>[:index,:show,:destroy,:edit,:update] do  
     resources :tags,:only=>[:index,:show] do
     end
 
