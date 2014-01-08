@@ -1,6 +1,6 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%=current_user.email %></h1>
 </div>
 
 <table class="table table-striped table-bordered">
@@ -10,9 +10,9 @@
   </tr>    
 </table>
 
-<%=render 'gb_repos/list',:collection=>@user.gb_repos%>
+<%=render 'gb_repos/table',:collection=>@user.gb_repos.limit(10)%>
 
-<%=render 'gists/list',:collection=>@user.gists%>
+<%=render 'gists/list',:collection=>@user.gists.limit(10)%>
 
 
 <div class="form-actions">

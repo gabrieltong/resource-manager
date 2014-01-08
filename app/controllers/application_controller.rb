@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def find_user
+    # @user = User.first
     @user = User.find_by_id(params[:user_id])
   end
 

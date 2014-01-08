@@ -42,7 +42,7 @@
         <% if current_user  %>
         <%=menu_item :gb_repos, user_gb_repos_path(current_user) %>
         <%=menu_item :gists, user_gists_path(current_user) %>
-        <%=menu_item :tags, user_tags_path(current_user) %>  
+        <%#=menu_item :tags, user_tags_path(current_user) %>  
         <% end %>
       <% end %>
       <%= menu_group :pull => :right do %>

@@ -43,6 +43,18 @@ class UsersController < ApplicationController
     render 'laws/index'
   end
 
+  def import_stared_gb_repos
+    p '.'*100
+    p @user.gb_users.first
+    @user.gb_users.first.try(:import_stared_gb_repos)
+    redirect_to request.referer
+  end
+
+  def import_gists
+    @user.gb_users.first.try(:import_gists)
+    redirect_to request.referer
+  end
+
   private
 
   def find_user

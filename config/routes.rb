@@ -20,6 +20,8 @@ GithubManager::Application.routes.draw do
   # resources :users,:only=>[:index,:show,:destroy,:edit,:update] do
   resources :users,:only=>[:index,:show,:destroy,:edit,:update] do  
     resources :tags,:only=>[:index,:show] do
+      resources :gb_repos,:only=>[:index]
+      resources :gists,:only=>[:index]
     end
 
     resources :gb_users,:only=>[:index,:show,:new,:create,:update,:edit] do
@@ -31,12 +33,19 @@ GithubManager::Application.routes.draw do
     resources :gists,:only=>[:index,:show] do
     end
 
+    member do
+      match :import_stared_gb_repos
+      match :import_gists
+    end
   end
 
 
-  resources :gb_users,:only=>[:index,:show]
+  resources :gb_users,:only=>[:index,:show] do
+  end
 
-  resources :gb_repos,:only=>[:index,:show]
+  resources :gb_repos,:only=>[:index,:show] do
+
+  end
 
   resources :tags,:only=>[:index,:show]
 

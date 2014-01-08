@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
   has_many :gists,:through=>:gb_users
   acts_as_tagger
 
-  after_save :update_gb_users
+  before_save :update_gb_users
 
   def update_gb_users
-
+  	self.gb_users = []
+  	self.gb_users << GbUser.find_or_create_by_username(self.gb_username)
   end
 end

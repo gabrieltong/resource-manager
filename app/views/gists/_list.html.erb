@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:address) %></th>
+      <th><%= model_class.human_attribute_name(:tags) %></th>      
     </tr>
   </thead>
   <tbody>
@@ -10,9 +11,9 @@
       <tr>
         <td>
           <%= link_to gist.address, gist_path(gist) %>
-          <br/><br/>
-          <%= render 'tags/input',:taggable=>gist,:owner=>@user%>
+          <%= link_to :gist,gist.address,:class=>'btn btn-mini' %><br/>
         </td>
+        <td><%= render 'tags/input',:taggable=>gist,:owner=>@user%></td>
       </tr>
     <% end %>
   </tbody>
