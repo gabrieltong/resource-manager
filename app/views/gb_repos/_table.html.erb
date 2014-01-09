@@ -10,6 +10,7 @@
       </th>
       <th><%= model_class.human_attribute_name(:tags) %></th>
       <th><%= model_class.human_attribute_name(:score) %></th>
+      <th><%= model_class.human_attribute_name(:yourscore) %></th>
       <!-- <th><%= model_class.human_attribute_name(:actions) %></th> -->
     </tr>
   </thead>
@@ -28,6 +29,8 @@
         </td>
         <td>
           <%= rating_for gb_repo, "score" %>
+        </td>
+        <td>
           <%= rating_for_user gb_repo, @user, "score", :star => 5 %>
         </td>
         <!-- <td>
