@@ -9,14 +9,14 @@
         /<%= model_class.human_attribute_name(:forks) %>
       </th>
       <th><%= model_class.human_attribute_name(:tags) %></th>
-      <th><%= model_class.human_attribute_name(:actions) %></th>
+      <!-- <th><%= model_class.human_attribute_name(:actions) %></th> -->
     </tr>
   </thead>
   <tbody>
     <% collection.each do |gb_repo| %>
       <tr>
         <td>
-        	<%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %>
+        	<%= link_to gb_repo.extra['name'], gb_repo.address %>
         	
           <span class="label label-info"><%=gb_repo.extra['stargazers_count']%></span>
           <span class="label label-info"><%=gb_repo.extra['watchers_count']%></span>
@@ -25,9 +25,9 @@
         <td>
           <%= render 'tags/input',:taggable=>gb_repo,:owner=>@user%>
         </td>
-        <td>
+        <!-- <td>
           <%= link_to :github,gb_repo.address,:class=>'btn btn-mini' %>
-        </td>
+        </td> -->
       </tr>
     <% end %>
   </tbody>
