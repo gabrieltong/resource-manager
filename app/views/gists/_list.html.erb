@@ -10,8 +10,7 @@
     <% collection.each do |gist| %>
       <tr>
         <td>
-          <%= link_to gist.address, gist_path(gist) %>
-          <%= link_to :gist,gist.extra[:html_url],:class=>'btn btn-mini' %><br/>
+          <%= link_to gist.extra['html_url'],gist.extra['html_url'] %>
         </td>
         <td><%= render 'tags/input',:taggable=>gist,:owner=>@user%></td>
       </tr>
