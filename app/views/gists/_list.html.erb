@@ -11,7 +11,7 @@
       <tr>
         <td>
           <%= link_to gist.address, gist_path(gist) %>
-          <%= link_to :gist,gist.extra.html_url,:class=>'btn btn-mini' %><br/>
+          <%= link_to :gist,gist.extra[:html_url],:class=>'btn btn-mini' %><br/>
         </td>
         <td><%= render 'tags/input',:taggable=>gist,:owner=>@user%></td>
       </tr>
