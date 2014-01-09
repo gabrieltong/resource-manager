@@ -6,6 +6,7 @@ class TagsController < ApplicationController
       @relation =  ActsAsTaggableOn::Tag.where(true)
     end
     paginate
+    @collection = @collection.order('name asc')
   end
 
   def show
