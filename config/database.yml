@@ -51,4 +51,4 @@ gabriellocal:
   username: root
   password:
   socket: /tmp/mysql.sock 
-  socket: /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
+  # socket: /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
