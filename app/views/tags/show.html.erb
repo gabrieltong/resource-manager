@@ -8,5 +8,5 @@
 <%=render 'gists/list',:collection=>Gist.tagged_with(@tag.name,:on=>:menus,:owned_by=>@user)%>
 
 <% content_for :right do %>
-<%=render 'tags/list',:collection=>@user.owned_tags,:user=>@user%>
+<%=render 'tags/list',:collection=>@user.owned_tags.order('name asc'),:user=>@user%>
 <% end %>

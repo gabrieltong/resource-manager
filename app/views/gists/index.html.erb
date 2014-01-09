@@ -8,5 +8,5 @@
 <%= will_paginate @collection, renderer: BootstrapPagination::Rails %>
 
 <% content_for :right do %>
-<%=render('tags/list',:collection=>@user.owned_tags,:user=>@user) if @user%>
+<%=render('tags/list',:collection=>@user.owned_tags.order('name asc'),:user=>@user) if @user%>
 <% end %>
