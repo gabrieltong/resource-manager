@@ -16,10 +16,10 @@
       <tr>
         <td>
         	<%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %>
-          <span class="label label-success"><%=gb_repo.extra['stargazers_count']%></span>
-          <span class="label label-success"><%=gb_repo.extra['watchers_count']%></span>
-          <span class="label label-success"><%=gb_repo.extra['forks']%></span>
-        	<%= link_to :github,gb_repo.address,:class=>'btn btn-mini' %><br/>
+        	<%= link_to :github,gb_repo.address,:class=>'btn btn-mini' %>
+          <span class="label label-info"><%=gb_repo.extra['stargazers_count']%></span>
+          <span class="label label-info"><%=gb_repo.extra['watchers_count']%></span>
+          <span class="label label-info"><%=gb_repo.extra['forks']%></span>
         </td>
         <td>
           <%= render 'tags/input',:taggable=>gb_repo,:owner=>@user%>
