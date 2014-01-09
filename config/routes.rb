@@ -1,5 +1,7 @@
 GithubManager::Application.routes.draw do
 
+  match '/rate' => 'rater#create', :as => 'rate'
+
   get "entrance/home"
 
   resources :tags,:only=>[:index] do

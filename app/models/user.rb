@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :gb_repos,:through=>:gb_users
   has_many :gists,:through=>:gb_users
   acts_as_tagger
-
+  letsrate_rater
   before_save :update_gb_users
 
   def update_gb_users
