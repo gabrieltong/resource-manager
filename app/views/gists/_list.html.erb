@@ -10,7 +10,7 @@
     <% collection.each do |gist| %>
       <tr>
         <td>
-          <%= link_to gist.extra['html_url'],gist.extra['html_url'] %>
+          <%= link_to gist.extra['files'].values.first['filename'],gist.extra['html_url'] %>
         </td>
         <td><%= render 'tags/input',:taggable=>gist,:owner=>@user%></td>
       </tr>
