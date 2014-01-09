@@ -16,9 +16,9 @@
       <tr>
         <td>
         	<%= link_to gb_repo.extra['name'], gb_repo_path(gb_repo) %>
-          <span class="badge"><%=gb_repo.extra['stargazers_count']%></span>
-          <span class="badge"><%=gb_repo.extra['watchers_count']%></span>
-          <span class="badge"><%=gb_repo.extra['forks']%></span>
+          <span class="label label-success"><%=gb_repo.extra['stargazers_count']%></span>
+          <span class="label label-success"><%=gb_repo.extra['watchers_count']%></span>
+          <span class="label label-success"><%=gb_repo.extra['forks']%></span>
         	<%= link_to :github,gb_repo.address,:class=>'btn btn-mini' %><br/>
         </td>
         <td>
