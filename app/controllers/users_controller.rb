@@ -44,9 +44,12 @@ class UsersController < ApplicationController
   end
 
   def import_stared_gb_repos
-    p '.'*100
-    p @user.gb_users.first
     @user.gb_users.first.try(:import_stared_gb_repos)
+    redirect_to request.referer
+  end
+
+  def import_newest_stared_gb_repos
+    @user.gb_users.first.try(:import_newest_stared_gb_repos)
     redirect_to request.referer
   end
 

@@ -9,7 +9,9 @@ class GbReposController < ApplicationController
     else
       @relation =  GbRepo.where(true)
     end
+    @relation = @relation.order('id desc')
     paginate
+
   end
 
   # GET /gb_repos/1

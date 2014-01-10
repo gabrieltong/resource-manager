@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   # 结果：设置好 @page 和 @per_page
   def paginate_params
     @page = params[:page] || 1 
-    @per_page = params[:per_page] || 100
+    @per_page = params[:per_page] || 20
     @random = params[:random].to_i || 0
     @per_random = params[:per_random] || 15
   end

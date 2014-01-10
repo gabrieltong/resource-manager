@@ -2,7 +2,10 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
 <%=link_to('import gb repos',import_stared_gb_repos_user_path(current_user),:class=>'btn btn-mini pull-right') if @user%>
+<%=link_to('import newest gb repos',import_newest_stared_gb_repos_user_path(current_user),:class=>'btn btn-mini pull-right') if @user%> 
+
 <br/><br/>
 <%=render 'list',:collection=>@collection%>
 <%= will_paginate @collection, renderer: BootstrapPagination::Rails %>

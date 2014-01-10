@@ -12,12 +12,19 @@ class GbUser < ActiveRecord::Base
     errors.add(:username,'wrong_username')
   end
 
-  def import_stared_gb_repos(page=1,per_page=100)
+  def import_newest_stared_gb_repos
+    import_stared_gb_repos :all=>false
+  end
+
+  def import_stared_gb_repos(options={})
     require 'json'
 
-    url,options  = "https://api.github.com/users/#{username}/starred?per_page=#{per_page}&page=#{page}",{'User-Agent'=>"#{username}"}
+    defaults = {:page=>1,:per_page=>100,:all=>true}
+    options = defaults.merge options
 
-    response = HTTParty.get(url,:headers =>options)
+    url,headers  = "https://api.github.com/users/#{username}/starred?per_page=#{options[:per_page]}&page=#{options[:page]}",{'User-Agent'=>"#{username}"}
+
+    response = HTTParty.get(url,:headers =>headers)
     
     items = JSON.parse(response.body)
     items.each do |item|
@@ -25,7 +32,10 @@ class GbUser < ActiveRecord::Base
       repo.extra = item
       gb_repos << repo
     end
-    import_stared_gb_repos(page+1) unless items.blank?
+
+    if (options[:all] and !items.blank?)
+      import_stared_gb_repos(:page=>options[:page]+1) 
+    end
   end
 
   def import_gists(page=1,per_page=100)

@@ -36,6 +36,7 @@ GithubManager::Application.routes.draw do
     end
 
     member do
+      match :import_newest_stared_gb_repos
       match :import_stared_gb_repos
       match :import_gists
     end
