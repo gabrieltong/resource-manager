@@ -18,7 +18,10 @@ ActiveRecord::Schema.define(:version => 20140109061120587) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "extra"
+    t.string   "language"
   end
+
+  add_index "gb_repos", ["language"], :name => "index_gb_repos_on_language"
 
   create_table "gb_repos_gb_users", :force => true do |t|
     t.integer "gb_repo_id", :null => false

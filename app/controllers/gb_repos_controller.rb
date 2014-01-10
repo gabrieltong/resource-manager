@@ -9,6 +9,15 @@ class GbReposController < ApplicationController
     else
       @relation =  GbRepo.where(true)
     end
+
+    if params[:tag]
+      @relation = @relation.tagged_with params[:tag]
+    end
+
+    if params[:language]
+      @relation = @relation.where(:language=>params[:language])
+    end
+
     @relation = @relation.order('id desc')
     paginate
 
