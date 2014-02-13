@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(:version => 20140109061120587) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "stage"
+    t.string   "address"
+    t.text     "extra"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rates", :force => true do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"

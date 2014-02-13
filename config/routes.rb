@@ -1,5 +1,8 @@
 GithubManager::Application.routes.draw do
 
+  resources :projects
+
+
   match '/rate' => 'rater#create', :as => 'rate'
 
   get "entrance/home"
